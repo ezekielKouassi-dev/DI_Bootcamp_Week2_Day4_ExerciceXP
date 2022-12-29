@@ -111,7 +111,7 @@ function hotelCost() {
         numberOfNight = prompt("How many night do you spent in our hotel? :");
     }while(numberOfNight.length == 0 || isNaN(numberOfNight))
 
-    return numberOfNight * 140;
+    return Number(numberOfNight) * 140;
 }
 
 hotelCost();
@@ -133,9 +133,21 @@ function planeRideCost() {
 }
 
 function rentalCarCost() {
+    
     let numberOfCarLocationDay;
     do{
         numberOfCarLocationDay = prompt("How many day for location a car :");
     }while(numberOfCarLocationDay.length == 0 || isNaN(numberOfCarLocationDay))
-    
+
+    if(numberOfCarLocationDay > 10) {
+        let priceToReduce = numberOfCarLocationDay*40*0.05;
+        return numberOfCarLocationDay*40 - priceToReduce;
+    }
+    return Number(numberOfCarLocationDay)*40;
 }
+
+function totalVacationCost() {
+    return hotelCost() + planeRideCost() + rentalCarCost();
+}
+
+totalVacationCost();
